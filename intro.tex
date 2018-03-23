@@ -1,20 +1,21 @@
 \section{Introduction}
 
 \acused{atm}
-For most people, interacting with touch screens provides an intuitive way of interacting with various everyday devices and appliances, from from coffee machines to \acp{atm}.
+For most people, interacting with touch screens provides an intuitive way of interacting with various everyday devices and appliances, from coffee machines to \acp{atm}.
 This ease and intuitiveness of touch screens is one of the reasons for the prevalence of touch screens nowadays.
-However, for one group of users using touch screens proves to be nearly impossible: the heavily visually impaired or blind people.
-For general purpose devices, such as smartphones and personal computers, exist a variety of screen readers and helpers that allow blind people to use these devices, such as Google TalkBack for Android \cite{talkback} (Google Inc., Mountain View, USA), Apple VoiceOver for iOS \cite{voiceover} (Apple Inc. Cupertino, USA), and the Windows Accessibility Service for Microsoft Windows \cite{windowsaccessibility} (Microsoft Corporation, Redmond, USA). 
+However, for one group of users, using touch screens without help proves to be completely impossible: the heavily visually impaired or blind people.
+For general purpose devices, such as smartphones and personal computers, a variety of screen readers and helpers exist, that allow blind people to use these devices.
+Examples include Google TalkBack for Android \cite{talkback} (Google Inc., Mountain View, USA), Apple VoiceOver for iOS \cite{voiceover} (Apple Inc. Cupertino, USA), and the Windows Accessibility Service for Microsoft Windows \cite{windowsaccessibility} (Microsoft Corporation, Redmond, USA). 
 But as touch screens provide  no tactile feedback and most embedded, special purpose devices (such as coffee machines) do not implement alternative ways for \ac{io}, the usage of these devices becomes seemingly impossible without eyesight or without relying on the help of other people, which poses an obstacle to the everyday life and diminishes the independence of blind people.
 
 Some research and development was done in the area of using wearables and computer vision to aid visually impaired people with various tasks.
 \textcite{googleglass} propose a system to help blind or visually impaired people with basic navigation and recognition tasks using Google Glass (Google Inc., Mountain View, USA).
 However, it is unclear whether their system can detect touch screens and an interaction mechanism to use touch screens was not intended.
-A different, yet similar to our idea, proposal was given by \textcite{holofacility}: They use the HoloLens (Microsoft Corporation, Redmond, USA) to supply additional information on devices, mainly intended to be used at trade fairs, where space for information material is constrained.
+A different, yet similar to our idea, proposal was given by \textcite{holofacility}: They use the Microsoft HoloLens (Microsoft Corporation, Redmond, USA) to supply additional information on devices, mainly intended to be used at trade fairs, where space for information material is constrained.
 Although their system \enquote{HoloFacility} is not meant as an assistive technology for the visually impaired, it shares some traits with our system.
 
-There exist a number of different proposals, which revolve around the usage of smart glasses to aid visually impaired people with various tasks, including some vague patents \autocite{smartglasses, smartglasses2, smartglasses3}, but also more sophisticated system, such as the one proposed by \textcite{bai2017smart}.
-It was meant to be used as an electronic travel aid and could \enquote{effectively improve the user's travelling experience in complicated indoor environments} in a user study.
+There are a number of different proposals which revolve around the usage of smart glasses to aid visually impaired people with various tasks, including some vague patents about using smart glasses as assistive devices for blind people \autocite{smartglasses, smartglasses2, smartglasses3}, but also more sophisticated system, such as the one proposed by \textcite{bai2017smart}.
+It was meant to be used as an electronic travel aid for visually impaired people and could \enquote{effectively improve the user's travelling experience in complicated indoor environments} in a user study.
 A patent hold by Logitech Europe SA \autocite{logitech} proposes a system for blind usage of touch interfaces.
 However, their system relies on the device manufacturer implementing the system, hence it is not device-independent and not suitable for the current situation of embedded touch screens on a manifold of different devices from different manufacturers.
 There are patents and devices for reading normally printed letters, some seemingly ancient \cite{ring}, some more recent \cite{ring2}.
@@ -25,8 +26,8 @@ To be specific, no system exists that
 	\item
 		is device independent.
 		Our system does not rely on any changes or cooperation by device manufacturers.
-		The only requirement for a device to be used with our system is the attaching of markers next to the touch screen and the device being present in our database (see \autoref{subsec:markers}).
-		Both requirements can be fulfilled by the users themself.
+		The only requirements for a device to be used with our system is the attaching of markers next to the touch screen and the device being present in our database (see \autoref{subsec:markers}).
+		Both requirements can be fulfilled by the users themselves.
 	\item
 		soley relies on speech and gesture \ac{io}.
 		Our system uses these modes of \ac{io} as natural ways of interacting with our users, allowing us to build an intuitive \ac{ui} for using touch screen devices without eyesight.

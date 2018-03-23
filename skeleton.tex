@@ -9,7 +9,8 @@ In the following, we will present the different parts of our system, used algori
 As  hardware platform we decided to use the Microsoft HoloLens as it is hands-free and does not obstruct the users from their normal tasks.
 It offers information about the spatial surroundings of the user via so called \enquote{Spatial Mapping} (see \Cref{subsec:spatial}) and an easy to use speech \ac{io} system via Microsoft's Cortana (see \Cref{subsec:ui}).
 Our intention for using the HoloLens was developing a proof-of-concept on a device that offers everything we need (see the following sections) and more.
-As the HoloLens is 	quite expensive, out system was not intended to be released as a read-to-use product or for general use.
+As the HoloLens is 	quite expensive, our system was not intended to be released as a ready-to-use product or for general use.
+Hence, the high price of the HoloLens is not an issue.
 
 We started developing with Unity (Unity Technologies, San Francisco, USA), as advised by the hardware manufacturer Microsoft, which is supposed to provide an  easy start into augmented reality development.
 However, we could not get needed libraries like OpenCV to work when developing with Unity, which made us switch to developing directly with DirectX and Microsoft Visual Studio 2017.
@@ -39,7 +40,7 @@ However, we could not get needed libraries like OpenCV to work when developing w
 \label{subsec:markers}
 To begin a successful interaction with any touchscreen, obviously the system first has to detect if a touchscreen is present.
 This is not a trivial problem.
-Touchscreens are hard to detect as reflections may occur, lighting and brightness conditions may vary and screen content is notoriously non-static.
+Touchscreens are hard to detect as reflections may occur, lighting and brightness conditions may vary and with screen content being notoriously non-static.
 
 %\begin{figure}[thpb]
 %\centering
@@ -51,7 +52,7 @@ Touchscreens are hard to detect as reflections may occur, lighting and brightnes
 Thus, we decided to use a marker-based approach to touchscreen detection, where users are required to put markers next to touchscreens.
 This places a small burden of initially placing the markers on users---which we believe is acceptable---but drastically reduces the complexity of touchscreen detection.
 
-Because we faced technical problems with using either the HoloLensARToolKit \cite{artoolkit}  or the OpenCV marker detection module ArUco \cite{aruco}, we decided to implement our own marker detection pipeline.
+Because we faced technical problems with using either the HoloLensARToolKit \cite{artoolkit}  or the OpenCV marker detection module ArUco \cite{aruco}, we decided to implement our own marker detection pipeline using OpenCV.
 \acused{api}
 We used the webcam stream, readily available via the HoloLens \ac{api}.
 First, we applied grayscaling, then regular and Otsu thresholding, and finally a difference edge detector, which leaves us with \autoref{fig:finalmarker}.
@@ -88,9 +89,9 @@ The data was represented as an unsigned integer -- a unique ID, identifying the 
 	\label{fig:markerdetection}
 \end{figure}
 
-The complete data on devices then could be loaded, either from local storage (as in  our case a \texttt{.json} file) or from a remote database\footnote{which also could be community maintained/crowdsourced}.
+The complete data on devices then could be loaded, either from local storage (as in  our case a \texttt{.json} file) or theoretically also from a remote database\footnote{which could be community maintained/crowdsourced}.
 Data includes the screen size and the position and size of each (touch-)button with an appropriate string describing the button (e.g.\ \enquote*{a}, \enquote*{b}, \dots{} for a virtual keyboard or \enquote{Espresso}, \enquote{Cappuccino},~\dots{} for buttons on a coffee machine).
-This button layout is saved for each possible screen that can be shown by the touch screen.
+This button layout is saved for each possible screen layout that can be shown by the touch screen.
 At this point  the system knows about the existence of a touch screen in its vicinity and the possible screen contents that can be shown.
 To determine which of many possible screens is shown at one time and create a virtual, blind-friendly representation, \ac{ocr} is used.
 
@@ -134,7 +135,7 @@ However, it had the big drawback of needing a permanent cable connection to a fu
 
 Our first own approach was to just use the HoloLens \ac{api} provided hand position and add a static offset to it.
 This proved accurate enough for testing but not for real world deployments:
-What if a user has really small hands?
+What if -- for example -- a user has really small hands or keeps their hand in an unexpected position?
 
 Again our fallback solution was OpenCV.
 We wrapped the user's fingertip with a colored tap (e.g.\ red, green or blue), then filtered the webcam stream for that color, mapped that dot into 3D space and thus had a reliable and accurate finger position.
@@ -149,13 +150,13 @@ For speech \ac{io}, we decided to use Microsoft's Cortana as it was readily avai
 If a supported touch screen device was detected in the user's vicinity, its presence was indicated to the user, who subsequently could choose between two modes of interaction: the \emph{verbose} mode and the \emph{normal} mode.
 
 \subsubsection{The verbose mode}
-The user announced to the system, that they wished to use the touch screen via a voice command.
+The user announced to the system that they wished to use the touch screen via a voice command.
 Then the system read out all the information shown on the touch screen to the user.
 Via voice command the user selected one button they wished to press.
 The system guided the user's finger to the selected button via \enquote{spatial beeping}.
 
 The HoloLens offers a spatial sound \ac{api}, allowing developers to seemingly play sounds as they were coming from specified 3D coordinates around the user.
-Combined with a beeping sound that varies in beeping frequency proportional to the finger's distance to the selected button, effectively allowing the user to quickly move their finger to the button's position.
+Combined with a beeping sound that varies in beeping frequency proportional to the finger's distance to the selected button (similar to how parking assistance systems work), effectively allowing the user to quickly move their finger to the button's position.
 
 \subsubsection{The normal mode}
 The normal mode was meant for users that  are already familiar with some devices around them.
@@ -227,7 +228,7 @@ We tried to validate our system by doing a small user study, recruiting the subj
 We contacted them and first sent out a short survey, asking them about their use of assistive technologies and impairments they face in everyday life.
 The answer confirmed what we were already suspecting: that touch screens are a major issue for them, due to their totally non-tactile feedback.
 They also were -- more or less -- interested in the use of new assistive technologies, but feared that this could be cost intensive.
-This also confirmed our  intention of implementing the system on the Microsoft HoloLens only as a proof-of-concept, not intended for general use, as the final product might have to be not as expensive as the HoloLens.
+This also confirmed our  intention of implementing the system on the Microsoft HoloLens only as a proof-of-concept, not intended for general use, as the final product might have to be not as expensive as the HoloLens to be adapted by the community.
 
 Unfortunately, we did not manage to do the planned user study, hence no results can be presented from that.
 This might be an interesting task for future researchers, evaluating the usability of our \ac{ui}.
@@ -257,10 +258,10 @@ The ubiquity of touchscreens nowadays especially poses a problem for blind peopl
 
 We developed a system design and implemented each part of the system separately, showing that each part is functionally viable.
 For our first prototype, we only had two supported touch screens of which only one -- a fictional coffee machine, implemented on an Android Tablet -- was functional.
-We also had to use a simplified marker detection, based on simple colored squares, similar to the finger tracking approach based on coloring the fingertip, as we could not get the marker detection algorithm to properly work in time.
+We also had to use a simplified marker detection algorithm, based on simple colored squares, similar to the finger tracking approach based on coloring the fingertip, as we could not get the marker detection algorithm to properly work in time.
 
 After switching the development environment from Unity to Visual Studio, a big part of the HoloLens development ecosystem and the Unity physics engine (which includes the raycasting) was not available to us anymore and the documentation for developing holographic apps with DirectX was incomplete at best.
-This resulted in us implementing our own, simplified raycasting, which could not use the spatial mapping of the HoloLens.
+This resulted in us implementing our own, simplified raycasting, which could not use the spatial mapping data of the HoloLens.
 
 Future researchers who want to continue working on this project should either port OpenCV to Unity and thus gain access to both OpenCV \emph{and} the HoloLens and Unity ecosystem or implement their own low-level processing of spatial mapping data and raycasting. Both tasks do not seem trivial and will require both a lot of time and knowledge of the developing team.
 
