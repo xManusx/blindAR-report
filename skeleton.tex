@@ -8,6 +8,8 @@ In the following, we will present the different parts of our system, used algori
 \label{subsec:sucks}
 As  hardware platform we decided to use the Microsoft HoloLens as it is hands-free and does not obstruct the users from their normal tasks.
 It offers information about the spatial surroundings of the user via so called \enquote{Spatial Mapping} (see \Cref{subsec:spatial}) and an easy to use speech \ac{io} system via Microsoft's Cortana (see \Cref{subsec:ui}).
+Our intention for using the HoloLens was developing a proof-of-concept on a device that offers everything we need (see the following sections) and more.
+As the HoloLens is 	quite expensive, out system was not intended to be released as a read-to-use product or for general use.
 
 We started developing with Unity (Unity Technologies, San Francisco, USA), as advised by the hardware manufacturer Microsoft, which is supposed to provide an  easy start into augmented reality development.
 However, we could not get needed libraries like OpenCV to work when developing with Unity, which made us switch to developing directly with DirectX and Microsoft Visual Studio 2017.
@@ -222,10 +224,18 @@ If you talk devices like smart phones or treadmills provide the manufacturer and
 %Results
 \section{Results}
 We tried to validate our system by doing a small user study, recruiting the subjects from the \ac{bbsb}, the Bavarian society for the visually impaired.
-We contacted them and sent out a short survey, asking them about their use of assistive technologies and impairments they face in everyday life.
+We contacted them and first sent out a short survey, asking them about their use of assistive technologies and impairments they face in everyday life.
+The answer confirmed what we were already suspecting: that touch screens are a major issue for them, due to their totally non-tactile feedback.
+They also were -- more or less -- interested in the use of new assistive technologies, but feared that this could be cost intensive.
+This also confirmed our  intention of implementing the system on the Microsoft HoloLens only as a proof-of-concept, not intended for general use, as the final product might have to be not as expensive as the HoloLens.
 
+Unfortunately, we did not manage to do the planned user study, hence no results can be presented from that.
+This might be an interesting task for future researchers, evaluating the usability of our \ac{ui}.
+
+\begin{comment}
 You describe the pure results in this section. Performance measures, reference system and experimental setup have to be explained in the methods part. Don't provide an interpretation of the results in this section, just talk about the results. Don't provide reasons why your system didn't work in this or that condition. Just mention that this was the case. Quantitative results are most striking and you might want to sum them up in a table (Tab.~\ref{result_table}). If you have a lot of different results, pick the best and most important ones. Focus on the purpose of your system! You can use the same structure as in the methods section if appropriate.\\
 The result section is written in simple past. Even if you have a live system, you describe the results as achieved in the evaluation. 
+\end{comment}
 
 %\begin{table}[!t]
 	%\caption{The caption in tables has to be self explaining like in figures (see Fig.). Make sure to explain all abbreviations that you use in the caption.}
@@ -241,7 +251,21 @@ The result section is written in simple past. Even if you have a live system, yo
 %\end{table}
 
 %Discussion
-\section{Discussion}
+\section{Discussion and Outlook}
+Our system tries to solve one of the many obstacles blind and visually impaired people face in everyday life.
+The ubiquity of touchscreens nowadays especially poses a problem for blind people, as touch screens do not give tactile feedback and most devices\footnote{the exception being \acp{atm} and similar \enquote{official} devices} do not implement different \acp{ui}.
+
+We developed a system design and implemented each part of the system separately, showing that each part is functionally viable.
+For our first prototype, we only had two supported touch screens of which only one -- a fictional coffee machine, implemented on an Android Tablet -- was functional.
+We also had to use a simplified marker detection, based on simple colored squares, similar to the finger tracking approach based on coloring the fingertip, as we could not get the marker detection algorithm to properly work in time.
+
+After switching the development environment from Unity to Visual Studio, a big part of the HoloLens development ecosystem and the Unity physics engine (which includes the raycasting) was not available to us anymore and the documentation for developing holographic apps with DirectX was incomplete at best.
+This resulted in us implementing our own, simplified raycasting, which could not use the spatial mapping of the HoloLens.
+
+Future researchers who want to continue working on this project should either port OpenCV to Unity and thus gain access to both OpenCV \emph{and} the HoloLens and Unity ecosystem or implement their own low-level processing of spatial mapping data and raycasting. Both tasks do not seem trivial and will require both a lot of time and knowledge of the developing team.
+
+
+\begin{comment}
 Begin with a short problem specific summary. Discuss every aspect from the result section and give an interpretation of the results. You can use the same structure as in the results. Why is the algorithm so good/bad? What are limitations or assumptions? What was remarkable in the project and can be seen in the data. Make sure to cite the literature when comparing to existing systems or algorithms. Always mention pros and cons! Discuss global strength and weakness and concentrate on major aspects.\\
 The discussion is mainly written in simple past. You can use present tense when talking about facts that you are absolutely sure about. If you are very self confident, you can deduce facts from your findings but often conditional formulations are more polite. Sometimes it is better to combine the discussion with an outlook so you might want to use future as well. 
 
@@ -249,3 +273,4 @@ The discussion is mainly written in simple past. You can use present tense when 
 \section{Summary and outlook}
 Sum up the most important project findings and mention what the next steps, improvements, enhancements could be. The outlook can consist of ideas that will be hard to realize. Don't just think about tomorrow, think about the next ten years. You can finish with advertising your work and point out the most important finding or development again.\\
 The summary part is written in simple past. The outlook is written in present tense or future.
+\end{comment}
